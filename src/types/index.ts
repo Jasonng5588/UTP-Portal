@@ -16,6 +16,7 @@ export interface Department {
     id: string;
     name: string;
     description: string | null;
+    email: string | null;
     icon: string | null;
     color: string | null;
     is_active: boolean;
