@@ -1,0 +1,337 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222 47% 11%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222 47% 11%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222 47% 11%);
+  --color-primary: hsl(221 100% 32%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(217 91% 60%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215 16% 47%);
+  --color-accent: hsl(210 40% 96%);
+  --color-accent-foreground: hsl(222 47% 11%);
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --color-border: hsl(214 32% 91%);
+  --color-input: hsl(214 32% 91%);
+  --color-ring: hsl(221 100% 32%);
+
+  --color-success: hsl(142 76% 36%);
+  --color-warning: hsl(38 92% 50%);
+  --color-info: hsl(199 89% 48%);
+
+  --color-chart-1: hsl(221 100% 32%);
+  --color-chart-2: hsl(217 91% 60%);
+  --color-chart-3: hsl(142 76% 36%);
+  --color-chart-4: hsl(38 92% 50%);
+  --color-chart-5: hsl(0 84% 60%);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+:root {
+  /* Legacy CSS variables for components */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 221 100% 32%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 91% 60%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 100% 32%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 8%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 221 100% 32%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 217 91% 60%;
+}
+
+* {
+  border-color: hsl(var(--border));
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Status Badge Colors */
+.status-open {
+  background-color: rgb(219 234 254);
+  color: rgb(30 64 175);
+}
+
+.dark .status-open {
+  background-color: rgb(30 58 138 / 0.3);
+  color: rgb(96 165 250);
+}
+
+.status-in_progress {
+  background-color: rgb(254 249 195);
+  color: rgb(161 98 7);
+}
+
+.dark .status-in_progress {
+  background-color: rgb(161 98 7 / 0.3);
+  color: rgb(250 204 21);
+}
+
+.status-pending {
+  background-color: rgb(255 237 213);
+  color: rgb(194 65 12);
+}
+
+.dark .status-pending {
+  background-color: rgb(194 65 12 / 0.3);
+  color: rgb(251 146 60);
+}
+
+.status-resolved {
+  background-color: rgb(220 252 231);
+  color: rgb(22 101 52);
+}
+
+.dark .status-resolved {
+  background-color: rgb(22 101 52 / 0.3);
+  color: rgb(74 222 128);
+}
+
+.status-closed {
+  background-color: rgb(243 244 246);
+  color: rgb(55 65 81);
+}
+
+.dark .status-closed {
+  background-color: rgb(17 24 39 / 0.3);
+  color: rgb(156 163 175);
+}
+
+.status-escalated {
+  background-color: rgb(254 226 226);
+  color: rgb(185 28 28);
+}
+
+.dark .status-escalated {
+  background-color: rgb(185 28 28 / 0.3);
+  color: rgb(248 113 113);
+}
+
+/* Priority Badge Colors */
+.priority-low {
+  background-color: rgb(241 245 249);
+  color: rgb(71 85 105);
+}
+
+.dark .priority-low {
+  background-color: rgb(30 41 59);
+  color: rgb(203 213 225);
+}
+
+.priority-medium {
+  background-color: rgb(219 234 254);
+  color: rgb(29 78 216);
+}
+
+.dark .priority-medium {
+  background-color: rgb(30 58 138 / 0.3);
+  color: rgb(96 165 250);
+}
+
+.priority-high {
+  background-color: rgb(255 237 213);
+  color: rgb(194 65 12);
+}
+
+.dark .priority-high {
+  background-color: rgb(194 65 12 / 0.3);
+  color: rgb(251 146 60);
+}
+
+.priority-urgent {
+  background-color: rgb(254 226 226);
+  color: rgb(185 28 28);
+}
+
+.dark .priority-urgent {
+  background-color: rgb(185 28 28 / 0.3);
+  color: rgb(248 113 113);
+}
+
+/* Animation Utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* Chat Bubble Styles */
+.chat-bubble-user {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: 1rem 1rem 0.25rem 1rem;
+}
+
+.chat-bubble-agent {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border-radius: 1rem 1rem 1rem 0.25rem;
+}
+
+.chat-bubble-ai {
+  background: linear-gradient(to right, rgb(239 246 255), rgb(238 242 255));
+  color: hsl(var(--foreground));
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  border: 1px solid rgb(191 219 254);
+}
+
+.dark .chat-bubble-ai {
+  background: linear-gradient(to right, rgb(30 58 138 / 0.2), rgb(55 48 163 / 0.2));
+  border-color: rgb(30 64 175);
+}
+
+/* Glass Effect */
+.glass {
+  background-color: rgb(255 255 255 / 0.8);
+  backdrop-filter: blur(16px);
+}
+
+.dark .glass {
+  background-color: rgb(17 24 39 / 0.8);
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
+}
+
+/* Loading Skeleton Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

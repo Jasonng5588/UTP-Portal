@@ -1,0 +1,87 @@
+﻿Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+node.exe : ΓÜá The "m
+iddleware" file conve
+ntion is deprecated. 
+Please use "proxy" in
+stead. Learn more: ht
+tps://nextjs.org/docs
+/messages/middleware-
+to-proxy
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" "C:
+\Program Files\nodejs
+/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ΓÜá The   
+  "middle...lewar    
+e-to-proxy:Strin    g
+) [], RemoteExc    ep
+tion
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 6.8s
+  Running TypeScript ...
+Failed to compile.
+
+./src/app/admin/knowl
+edge-base/page.tsx:10
+3:35
+Type error: Property 
+'category' does not e
+xist on type 'Knowled
+geBase'.
+
+[0m [90m 101 |[39m
+                 titl
+e[33m:[39m article
+[33m.[39mtitle[33m,
+[39m
+ [90m 102 |[39m    
+             content
+[33m:[39m article[3
+3m.[39mcontent[33m,
+[39m
+[31m[1m>[22m[39m
+[90m 103 |[39m      
+           category[
+33m:[39m article[33
+m.[39mcategory [33m
+||[39m [32m""[39m
+[33m,[39m
+ [90m     |[39m    
+                     
+          [31m[1m^
+[22m[39m
+ [90m 104 |[39m    
+             tags[33
+m:[39m article[33m.
+[39mtags [33m?[39m
+ article[33m.[39mta
+gs[33m.[39mjoin([3
+2m", "[39m) [33m:[
+39m [32m""[39m[33m
+,[39m
+ [90m 105 |[39m    
+             departme
+nt_id[33m:[39m arti
+cle[33m.[39mdepartm
+ent_id [33m||[39m 
+[32m""[39m[33m,[39
+m
+ [90m 106 |[39m    
+         })[33m;[39
+m[0m
+Next.js build worker 
+exited with code: 1 a
+nd signal: null

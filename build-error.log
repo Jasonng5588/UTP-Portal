@@ -1,0 +1,161 @@
+﻿Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+node.exe : ΓÜá The "m
+iddleware" file conve
+ntion is deprecated. 
+Please use "proxy" in
+stead. Learn more: ht
+tps://nextjs.org/docs
+/messages/middleware-
+to-proxy
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" "C:
+\Program Files\nodejs
+/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ΓÜá The   
+  "middle...lewar    
+e-to-proxy:Strin    g
+) [], RemoteExc    ep
+tion
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  Creating an optimized production build ...
+Error: Cannot apply u
+nknown utility class 
+`bg-primary`
+    [2m[at onInvalid
+Candidate (C:\UTP-UCS
+\node_modules\tailwin
+dcss\dist\lib.js:21:1
+511)][0m
+    [2m[at Te (C:\UT
+P-UCS\node_modules\ta
+ilwindcss\dist\lib.js
+:16:36652)][0m
+    [2m[at C:\UTP-UC
+S\node_modules\tailwi
+ndcss\dist\lib.js:21:
+355][0m
+    [2m[at Rr (C:\UT
+P-UCS\node_modules\ta
+ilwindcss\dist\lib.js
+:3:1718)][0m
+    [2m[at _ (C:\UTP
+-UCS\node_modules\tai
+lwindcss\dist\lib.js:
+3:1377)][0m
+    [2m[at $e (C:\UT
+P-UCS\node_modules\ta
+ilwindcss\dist\lib.js
+:21:172)][0m
+    [2m[at un (C:\UT
+P-UCS\node_modules\ta
+ilwindcss\dist\lib.js
+:38:294)][0m
+    [2m[at async cn 
+(C:\UTP-UCS\node_modu
+les\tailwindcss\dist\
+lib.js:38:631)][0m
+    [2m[at async Xr 
+(C:\UTP-UCS\node_modu
+les\@tailwindcss\node
+\dist\index.js:10:341
+7)][0m
+    [2m[at async I (
+C:\UTP-UCS\node_modul
+es\@tailwindcss\postc
+ss\dist\index.js:10:3
+977)][0m
+
+> Build error occurre
+d
+Error: Turbopack buil
+d failed with 1 error
+s:
+./src/app/globals.css
+Error evaluating Node
+.js code
+CssSyntaxError: tailw
+indcss: C:\UTP-UCS\sr
+c\app\globals.css:1:1
+: Cannot apply unknow
+n utility class `bg-p
+rimary`
+    at Input.error (n
+ode_modules/postcss/l
+ib/input.js:135:16) [
+C:\UTP-UCS\.next\buil
+d\chunks\node_modules
+_fe693df6._.js:4651:2
+2]
+    at Root.error (no
+de_modules/postcss/li
+b/node.js:146:32) [C:
+\UTP-UCS\.next\build\
+chunks\node_modules_f
+e693df6._.js:928:38]
+    [at Object.Once (
+C:\UTP-UCS\node_modul
+es\@tailwindcss\postc
+ss\dist\index.js:10:6
+911)]
+    at async LazyResu
+lt.runAsync (node_mod
+ules/postcss/lib/lazy
+-result.js:293:11) [C
+:\UTP-UCS\.next\build
+\chunks\node_modules_
+fe693df6._.js:6206:21
+]
+    at async transfor
+m (turbopack:///[turb
+opack-node]/transform
+s/postcss.ts:70:34) [
+C:\UTP-UCS\.next\buil
+d\chunks\[root-of-the
+-server]__51225daf._.
+js:146:36]
+    at async run (tur
+bopack:///[turbopack-
+node]/ipc/evaluate.ts
+:92:23) [C:\UTP-UCS\.
+next\build\chunks\[ro
+ot-of-the-server]__97
+4941ed._.js:443:31]
+
+Import trace:
+  Client Component Br
+owser:
+    ./src/app/globals
+.css [Client Componen
+t Browser]
+    ./src/app/layout.
+tsx [Server Component
+]
+
+
+    at async transfor
+m (turbopack:///[turb
+opack-node]/transform
+s/postcss.ts:70:34) [
+C:\UTP-UCS\.next\buil
+d\chunks\[root-of-the
+-server]__51225daf._.
+js:146:36])
+    at async run (tur
+bopack:///[turbopack-
+node]/ipc/evaluate.ts
+:92:23) [C:\UTP-UCS\.
+next\build\chunks\[ro
+ot-of-the-server]__97
+4941ed._.js:443:31])
