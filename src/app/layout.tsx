@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "UTP Customer Support",
   description: "University Technology PETRONAS Customer Support System",
   keywords: ["UTP", "support", "helpdesk", "tickets", "customer service"],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://utp-portal.vercel.app"),
 };
 
 export default function RootLayout({
