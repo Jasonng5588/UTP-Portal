@@ -1,22 +1,28 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize inside handler to prevent build errors if key is missing
+function getOpenAIClient() {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+        console.warn("OPENAI_API_KEY is not set in environment variables");
+        return null; // Return null instead of throwing to allow local fallback
+    }
+    return new OpenAI({ apiKey });
+}
 
 // UTP-specific department mapping with keywords
 const UTP_DEPARTMENTS: Record<string, { keywords: string[]; description: string }> = {
     "Residential Village (RV)": {
         keywords: [
-            "room", "hostel", "village", "v1", "v2", "v3", "v4", "v5", "v6",
             "fan", "air conditioner", "ac", "aircon", "bed", "mattress", "wardrobe",
             "toilet", "bathroom", "shower", "water heater", "lamp", "light", "bulb",
             "door", "lock", "key", "window", "curtain", "leak", "leaking", "pipe",
             "sink", "floor", "ceiling", "wall", "furniture", "chair", "table",
             "roommate", "cleaning", "laundry", "pantry", "fridge", "refrigerator",
             "pest", "cockroach", "ant", "mosquito", "accommodation", "dorm", "dormitory",
-            "check-in", "check-out", "rv", "residential", "housing", "broke", "broken", "faulty"
+            "check-in", "check-out", "rv", "residential", "housing", "broke", "broken", "faulty",
+            "dirty", "dusty", "smell", "odor", "noise", "noisy", "socket", "power outlet"
         ],
         description: "Residential Village - room maintenance, hostel facilities, accommodation issues"
     },
@@ -97,7 +103,9 @@ const UTP_DEPARTMENTS: Record<string, { keywords: string[]; description: string 
             "building", "classroom", "lecture", "hall", "lab", "laboratory", "lift",
             "elevator", "escalator", "stairs", "toilet", "restroom", "washroom",
             "cafeteria", "canteen", "food", "court", "maintenance", "repair", "clean",
-            "renovation", "construction", "electricity", "power", "outage"
+            "renovation", "construction", "electricity", "power", "outage",
+            "road", "pothole", "drain", "drainage", "landscape", "grass", "tree",
+            "rubbish", "garbage", "bin", "recycle"
         ],
         description: "Facilities - campus buildings, classrooms, common areas maintenance"
     }
@@ -162,7 +170,8 @@ export async function POST(request: Request) {
         const localResult = classifyLocally(text);
 
         // If we have OpenAI API key and low confidence, use AI
-        if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== "your_openai_api_key_here") {
+        const openai = getOpenAIClient();
+        if (openai && process.env.OPENAI_API_KEY !== "your_openai_api_key_here") {
             try {
                 const deptList = Object.entries(UTP_DEPARTMENTS)
                     .map(([name, config]) => `- ${name}: ${config.description}`)

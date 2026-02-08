@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize inside handler to prevent build errors if key is missing
+function getOpenAIClient() {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+        throw new Error("OPENAI_API_KEY is not set in environment variables");
+    }
+    return new OpenAI({ apiKey });
+}
 
 export async function POST(request: Request) {
     try {
@@ -21,6 +26,7 @@ export async function POST(request: Request) {
             textToSummarize = `Title: ${title}\n\nDescription: ${description}`;
         }
 
+        const openai = getOpenAIClient();
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
