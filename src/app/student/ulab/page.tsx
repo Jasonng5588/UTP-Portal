@@ -189,6 +189,22 @@ export default function ULabPage() {
         }, 1500);
     };
 
+    // Mock data for missing parts
+    const labHistory: any[] = [];
+    const labResources = [
+        { id: "1", name: "Lab Safety Guideline 2024", type: "PDF", size: "2.4 MB" },
+        { id: "2", name: "Equipment Handling Manual", type: "PDF", size: "1.8 MB" },
+        { id: "3", name: "Experiment Report Template", type: "DOCX", size: "450 KB" },
+    ];
+
+    const labCategories = [
+        { name: "All", icon: FlaskConical },
+        { name: "Computer", icon: Cpu },
+        { name: "Physics", icon: Microscope },
+        { name: "Chemistry", icon: Beaker },
+        { name: "Engineering", icon: Hammer },
+    ];
+
     const filteredLabs = labs.filter((lab) =>
         categoryFilter === "All" || lab.category === categoryFilter
     );
@@ -203,9 +219,16 @@ export default function ULabPage() {
         toast.success("Downloading resource...");
     };
 
-    const startSafetyModule = (moduleId: string) => {
-        toast.info("Opening safety training module...");
-    };
+    // Derived state for view
+    const myLabSessions = myBookings.map(b => ({
+        id: b.id,
+        course: b.purpose, // Showing purpose as "course" context
+        labName: b.lab?.name || "Unknown Lab",
+        date: b.booking_date,
+        time: `${b.start_time} - ${b.end_time}`,
+        instructor: "N/A",
+        status: b.status
+    }));
 
     return (
         <div className="space-y-6 animate-fade-in">
