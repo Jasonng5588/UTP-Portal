@@ -34,21 +34,23 @@ import {
     Loader2,
 } from "lucide-react";
 
+import type { Lab, SafetyModule, LabBooking, SafetyCompletion } from "@/types";
+
 export default function ULabPage() {
     const [activeTab, setActiveTab] = useState("schedule");
     const [categoryFilter, setCategoryFilter] = useState("All");
     const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
-    const [selectedLab, setSelectedLab] = useState<any>(null);
+    const [selectedLab, setSelectedLab] = useState<Lab | null>(null);
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("");
     const [purpose, setPurpose] = useState("");
     const [loading, setLoading] = useState(true);
 
     // Data states
-    const [labs, setLabs] = useState<any[]>([]);
+    const [labs, setLabs] = useState<Lab[]>([]);
     const [mySessions, setMySessions] = useState<any[]>([]);
-    const [myBookings, setMyBookings] = useState<any[]>([]);
-    const [safetyModules, setSafetyModules] = useState<any[]>([]);
+    const [myBookings, setMyBookings] = useState<any[]>([]); // Keeping as any[] for now as it has joined data
+    const [safetyModules, setSafetyModules] = useState<SafetyModule[]>([]);
     const [completions, setCompletions] = useState<Set<string>>(new Set());
 
     const supabase = createClient();
@@ -405,7 +407,7 @@ export default function ULabPage() {
                                         Capacity: {lab.capacity}
                                     </p>
                                     <div className="flex gap-1 mt-2 flex-wrap">
-                                        {lab.equipment.slice(0, 3).map((eq) => (
+                                        {lab.equipment?.slice(0, 3).map((eq: string) => (
                                             <Badge key={eq} variant="secondary" className="text-xs">{eq}</Badge>
                                         ))}
                                     </div>

@@ -388,12 +388,16 @@ export interface MaintenanceRequest {
 // ========== ULab Types ==========
 export interface Lab {
     id: string;
+    code: string;
     name: string;
-    building: string;
-    room_number: string;
+    building: string | null;
+    floor: string | null;
+    room_number: string | null; // DB doesn't have this, maybe map 'code' or 'name', keeping for safety
     capacity: number | null;
+    category: string | null;
     equipment: string[] | null;
-    is_available: boolean;
+    is_active: boolean; // DB has is_active
+    is_available: boolean; // Keeping for UI compat
 }
 
 export interface LabSession {
@@ -409,16 +413,20 @@ export interface LabSession {
 
 export interface LabBooking {
     id: string;
-    session_id: string;
-    user_id: string;
+    lab_id: string;
+    student_id: string;
+    booking_date: string;
+    start_time: string;
+    end_time: string;
     purpose: string | null;
     status: string;
     created_at: string;
+    lab?: Lab; // Optional relation
 }
 
 export interface SafetyModule {
     id: string;
-    title: string;
+    name: string;
     description: string | null;
     content_url: string | null;
     is_required: boolean;
